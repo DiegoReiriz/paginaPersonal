@@ -170,25 +170,47 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               </paper-material>
             </section>
 
-            <section data-route="blog">
+            <section data-route="blog" tabindex="-1">
               <paper-material elevation="1">
                 <p>Coming soon...</p>
               </paper-material>
             </section>
 
-            <section data-route="misProyectos">
+            <section data-route="misProyectos" tabindex="-1">
+
+                <iron-ajax auto
+                         url="./projects.json"
+                         handle-as="json"
+                         last-response="{{ajaxResponse}}"></iron-ajax>
+
+
+                 <template is="dom-repeat" items="[[ajaxResponse.projects]]">
+
+                   <paper-material elevation="1" id="myProject-[[item.id]]">
+                     <p><strong>Nombre:</strong> [[item.name]]</p>
+                     <p><strong>Tipo:</strong> [[item.type]]</p>
+                     <p><strong>Drescripción:</strong> [[item.description]]</p>
+                     <p><a href="[[item.src]]" alt="link al proyecto" >Link al proyecto</a></p>
+                   </paper-material>
+
+                   <script type="text/javascript">
+                    var card=document.querySelector("#myProject-[[item-id]]");
+                    card.append("<p>PEEEEEEEEEEEENSE</p>");
+                   </script>
+                 </template>
+
+
+
+
+            </section>
+
+            <section data-route="colaboracionesProyectos" tabindex="-1">
               <paper-material elevation="1">
                 <p>Coming soon...</p>
               </paper-material>
             </section>
 
-            <section data-route="colaboracionesProyectos">
-              <paper-material elevation="1">
-                <p>Coming soon...</p>
-              </paper-material>
-            </section>
-
-            <section data-route="aboutMe">
+            <section data-route="aboutMe" tabindex="-1">
               <paper-material elevation="1">
                 <p>Actualmente me encuentro muy interesado en el diseño de software y las diferentes arquitecturas del mismo que se utilizan hoy en día. Así mismo también me interesan temáticas como, seguridad informática, hacking ético, HPC (high performance computing), deep learning, machine learning,...</p>
                 <p>Esto no quita que me atraiga probar e indagar en todas las tecnologías nuevas que me caigan en las manos independientemente de la  plataforma.</p>
