@@ -1,0 +1,47 @@
+{
+  "projects": [
+    {
+      "id": "0",
+      "name":"Polymer First Steps",
+      "type": "Github",
+      "src": "https://github.com/DiegoReiriz/PolymerFirstSteps",
+      "description": "Repositorio con una serie de ejemplos que abordan el desarrollo de webcomponents mediante el uso de polymer."
+    },
+    {
+      "id": "1",
+      "name":"P2P-CORBA",
+      "type": "Github",
+      "src": "https://github.com/DiegoReiriz/p2p-corba",
+      "description": "Proyecto para la asignatura de Computación Distribuida, en el cual teníamos que desarrollar una aplicación de chat similar a messenger, con una arquitectura similar a la de la red p2p Gnutella. Además la comunicación entre los diferentes elementos de la red se tenía que realizar mediante el estandar CORBA.
+      El servidor de la aplicación, el cual me encargué de desarrollar, se encuentra desarrollado en c++ y almacena sus datos en una base de datos SQLite.
+      Por otro lado los clientes los desarrolló un compañero, usando java y javafx.
+      Por último, la comunicación entre clientes y servidores se realizó utilizando el middleware OmniORB."
+    },
+    {
+      "id": "2",
+      "name":"Tienda de Música",
+      "type": "Github",
+      "src": "https://github.com/snooze6/Ratzinger",
+      "description": "Proyecto para la asignatura de Desarrollo de Aplicaciones Web Avanzadas basado en J2E, en el cuál me encargué de diseñar toda la arquitectura del sistema, la mayor parte de las páginas web y la base de datos.
+      La arquitectura elegida de la aplicación está basada en una aproximación realiza por mí hacia las conocidas Arquitecturas Hexagonales o Clean Architectures, pero no fue posible ceñirse completamente debido a ciertas restricciones impuestas por el profesor de la asignatura.
+      En cuanto a las tecnologías,frameworks y librerías nos encontramos con las siguientes:
+        web
+          html5
+          css3
+          js
+          material design lite
+          ajax
+
+        servidor(apache tomcat 8 local)
+          J2E
+          JSP
+          JSTL
+          JNDI
+          JavaMail API
+
+        base de datos(desplegada en AWS)
+          MySQL
+        "
+    }
+  ]
+}
