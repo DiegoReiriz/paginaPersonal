@@ -1,25 +1,32 @@
 {
   "projects": [
     {
-      "id": "0",
-      "name":"Polymer First Steps",
+      "id": "3",
+      "name":"Mi página web",
       "type": "Github",
-      "src": "https://github.com/DiegoReiriz/PolymerFirstSteps",
-      "description": "Repositorio con una serie de ejemplos que abordan el desarrollo de webcomponents mediante el uso de polymer."
-    },
-    {
-      "id": "1",
-      "name":"P2P-CORBA",
-      "type": "Github",
-      "src": "https://github.com/DiegoReiriz/p2p-corba",
-      "description": "Proyecto para la asignatura de Computación Distribuida, en el cual teníamos que desarrollar una aplicación de chat similar a messenger, con una arquitectura similar a la de la red p2p Gnutella. Además la comunicación entre los diferentes elementos de la red se tenía que realizar mediante el estandar CORBA.\nEl servidor de la aplicación, el cual me encargué de desarrollar, se encuentra desarrollado en c++ y almacena sus datos en una base de datos SQLite.\nPor otro lado los clientes los desarrolló un compañero, usando java y javafx.\nPor último, la comunicación entre clientes y servidores se realizó utilizando el middleware OmniORB."
+      "src": "https://github.com/DiegoReiriz/DiegoReiriz.github.io",
+      "description": "Mi página web personal, realizada encima del [PSK (Polymer Starter Kit)](https://github.com/PolymerElements/polymer-starter-kit). Mi finalidad con este proyecto es enfrentarme con polymer a un caso real.<br/><br/>En esta página web trato de crear un punto común en el que reunir toda mi actividad profesional. Mi meta es llegar a convertirla en una [Progressive Web Apps](https://developers.google.com/web/progressive-web-apps), pero con las restricción de que quiero que se aloje completamente en [Github](https://github.com/) como una [GitHub page](https://pages.github.com/)."
     },
     {
       "id": "2",
       "name":"Tienda de Música",
       "type": "Github",
       "src": "https://github.com/snooze6/Ratzinger",
-      "description": "Proyecto para la asignatura de Desarrollo de Aplicaciones Web Avanzadas basado en J2E, en el cuál me encargué de diseñar toda la arquitectura del sistema, la mayor parte de las páginas web y la base de datos.\nLa arquitectura elegida de la aplicación está basada en una aproximación realiza por mí hacia las conocidas Arquitecturas Hexagonales o Clean Architectures, pero no fue posible ceñirse completamente debido a ciertas restricciones impuestas por el profesor de la asignatura.\nEn cuanto a las tecnologías,frameworks y librerías nos encontramos con las siguientes:\nweb\n<ul><li>html5</li><li>css3</li><li>js</li><li>material design lite</li><li>ajax</li></lu>\nservidor(apache tomcat 8 local)<lu><li>J2E</li><li>JSP</li><li>JSTL</li><li>JNDI</li><li>JavaMail API</li></lu>\nbase de datos(desplegada en AWS)<lu><li>MySQL</li></lu>"
+      "description": "Proyecto para la asignatura de Desarrollo de Aplicaciones Web Avanzadas basado en J2E, en el cuál me encargué de diseñar toda la arquitectura del sistema, la mayor parte de las páginas web y la base de datos.<br/><br/>La arquitectura elegida de la aplicación está basada en una aproximación realizada por mí hacia las conocidas Arquitecturas Hexagonales o Clean Architectures, pero no fue posible ceñirse completamente debido a ciertas restricciones impuestas por el profesor de la asignatura.<br/><br/>En cuanto a las tecnologías,frameworks y librerías nos encontramos con las siguientes:<br/><br/>web<ul><li>html5</li><li>css3</li><li>js</li><li>material design lite</li><li>ajax</li></ul>servidor(apache tomcat 8 local)<ul><li>J2E</li><li>JSP</li><li>JSTL</li><li>JNDI</li><li>JavaMail API</li></ul>base de datos(desplegada en AWS)<ul><li>MySQL</li></ul>"
+    },
+    {
+      "id": "1",
+      "name":"P2P-CORBA",
+      "type": "Github",
+      "src": "https://github.com/DiegoReiriz/p2p-corba",
+      "description": "Proyecto para la asignatura de Computación Distribuida, en el cual teníamos que desarrollar una aplicación de chat similar a messenger, con una arquitectura similar a la de la red p2p Gnutella. Además la comunicación entre los diferentes elementos de la red se tenía que realizar mediante el estandar CORBA.<br/><br/>El servidor de la aplicación, el cual me encargué de desarrollar, se encuentra desarrollado en c++ y almacena sus datos en una base de datos SQLite.<br/><br/>Por otro lado los clientes los desarrolló un compañero, usando java y javafx.<br/><br/>Por último, la comunicación entre clientes y servidores se realizó utilizando el middleware OmniORB."
+    },
+    {
+      "id": "0",
+      "name":"Polymer First Steps",
+      "type": "Github",
+      "src": "https://github.com/DiegoReiriz/PolymerFirstSteps",
+      "description": "Repositorio con una serie de ejemplos que abordan el desarrollo de webcomponents mediante el uso de polymer."
     }
   ]
 }
