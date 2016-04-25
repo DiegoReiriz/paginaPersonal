@@ -16,9 +16,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
 
 <!-- Paper elements -->
-<link rel="import" href="../../paper-styles/shadow.html">
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
-<link rel="import" href="../../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../bower_components/paper-styles/typography.html">
 
 <link rel="import" href="../../bower_components/marked-element/marked-element.html">
@@ -26,29 +26,41 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <dom-module id="my-projects">
 
   <template>
-
-    <link rel="stylesheet" href="styles/main.css">
-
     <style include = "shared-styiles">
       :host {
         display: block;
       }
 
-      paper-material {
-        border-radius: 2px;
-        height: 100%;
-        padding: 16px 0 16px 0;
-        width: calc(98.66% - 16px);
-        margin: 16px auto;
-        background: white;
+      paper-card{
+        margin-bottom: 16px;
       }
 
-      paper-material {
-        --menu-container-display: none;
-        width: calc(97.33% - 32px);
-        padding-left: 16px;
-        padding-right: 16px;
+      paper-card.project { @apply(--layout-horizontal); }
+      .image {
+        width: 50px;
+
+
+        background: url('../../images/GitHub-Mark-120px-plus.png');
+        background-size: 75% auto;;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: #E0E0E0;
+
+        border-right: 1px solid #e8e8e8;
+
       }
+      .content {
+        @apply(--layout-flex);
+        float: left;
+      }
+      .header { @apply(--paper-font-headline); }
+      .name { color: var(--paper-grey-600); margin: 10px 0; }
+      paper-icon-button.rate-icon {
+        --iron-icon-fill-color: white;
+        --iron-icon-stroke-color: var(--paper-grey-600);
+      }
+
+      a { color: var(--google-blue-500); }
 
     </style>
 
@@ -58,15 +70,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
              last-response="{{ajaxResponse}}"></iron-ajax>
 
      <template is="dom-repeat" items="[[ajaxResponse.projects]]">
-       <paper-material elevation="1">
-         <p><strong>Nombre:</strong> [[item.name]]</p>
-         <p><strong>Tipo:</strong> [[item.type]]</p>
-         <p>
-           <strong>Drescripción:</strong>
-           <marked-element markdown="[[item.description]]" ></marked-element>
-         </p>
-         <p><a href="[[item.src]]" alt="link al proyecto" target="_blank">Link al proyecto</a></p>
-       </paper-material>
+       <paper-card class="project">
+        <div class="image"></div>
+         <div class="content">
+           <div class="card-content">
+             <div class="header"><strong>Nombre:</strong> [[item.name]]</div>
+             <!-- <div class="name"><strong>Tipo:</strong> [[item.type]]</div> -->
+             <div>
+              <p><strong>Descripción:</strong></p>
+              <marked-element markdown="[[item.description]]">
+                <div class="markdown-html"></div>
+              </marked-element>
+            </div>
+           </div>
+           <div class="card-actions">
+             <a href="[[item.src]]" alt="link al proyecto" target="_blank"><paper-button noink>Link al proyecto</paper-button></a>
+           </div>
+         </div>
+       </paper-card>
+
      </template>
   </template>
 
