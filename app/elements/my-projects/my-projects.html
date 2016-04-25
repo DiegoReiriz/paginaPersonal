@@ -17,11 +17,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <!-- Paper elements -->
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/paper-spinner/paper-spinner.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../bower_components/paper-styles/typography.html">
 
+<!-- Marked element -->
 <link rel="import" href="../../bower_components/marked-element/marked-element.html">
+
+<!-- FireBase element -->
+<link rel="import" href="../../bower_components/firebase-element/firebase-collection.html">
+
+
 
 <dom-module id="my-projects">
 
@@ -62,14 +69,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       a { color: var(--google-blue-500); }
 
+      #spinContainer{
+        text-align: center;
+      }
+      #spin{
+        margin: auto;
+      }
+
     </style>
 
-    <iron-ajax auto
-             url="[[projects]]"
-             handle-as="json"
-             last-response="{{ajaxResponse}}"></iron-ajax>
+    <div id="spinContainer">
+      <paper-spinner id="spin" active></paper-spinner>
+    </div>
 
-     <template is="dom-repeat" items="[[ajaxResponse.projects]]">
+    <firebase-collection
+      location="[[src]]"
+      data="{{response}}"
+      on-firebase-value="_firebaseLoaded"></firebase-collection>
+
+     <template is="dom-repeat" items="[[response]]">
        <paper-card class="project">
         <div class="image"></div>
          <div class="content">
@@ -88,7 +106,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
            </div>
          </div>
        </paper-card>
-
      </template>
   </template>
 
@@ -97,11 +114,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       is: 'my-projects',
 
       properties: {
-        projects: {
+        src: {
           type: String,
-          value: './projects.json',
-          notify: true
+          value: 'https://dazzling-fire-3775.firebaseio.com/projects'
         }
+      },
+      _firebaseLoaded: function() {
+        this.$.spin.active=false;
+        this.$.spinContainer.style.display='none';
       }
     });
 
