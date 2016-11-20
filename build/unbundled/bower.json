@@ -24,7 +24,9 @@
     "marked-element": "PolymerElements/marked-element#^1.2.0",
     "paper-tabs": "PolymerElements/paper-tabs#^1.7.0",
     "particles.js": "^2.0.0",
-    "iron-icons": "PolymerElements/iron-icons#^1.2.0"
+    "iron-icons": "PolymerElements/iron-icons#^1.2.0",
+    "neon-animation": "PolymerElements/neon-animation#^1.2.4",
+    "iron-swipeable-container": "PolymerElements/iron-swipeable-container#^1.0.3"
   },
   "devDependencies": {
     "web-component-tester": "^4.0.0"

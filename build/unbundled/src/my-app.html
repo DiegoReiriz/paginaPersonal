@@ -12,9 +12,14 @@
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
 <link rel="import" href="../bower_components/paper-tabs/paper-tab.html">
+<link rel="import" href="../bower_components/neon-animation/neon-animated-pages.html">
+<link rel="import" href="../bower_components/neon-animation/animations/slide-from-bottom-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/fade-out-animation.html">
+
+</head><body>iron-swipeable-container
 <link rel="import" href="my-icons.html">
 
-</head><body><dom-module id="my-app">
+<dom-module id="my-app">
   <template>
     <style>
       :host {
@@ -59,13 +64,19 @@
 
       /*ADDED*/
       paper-toolbar {
-          --paper-toolbar-background: var(--paper-blue-900);
+          --paper-toolbar-background: var(--app-primary-color);
         }
 
         .self-end {
           /* This mixin (from iron-flex-layout) aligns the tabs to the
              bottom of the toolbar. */
           @apply(--layout-self-end);
+        }
+
+        neon-animated-pages{
+          overflow-x: hidden;
+          width: 100%;
+          height: 100%;
         }
 
     </style>
@@ -79,7 +90,7 @@
       
       
       
-      <app-header-layout id="particles-js" has-scrolling-region="">
+      <app-header-layout has-scrolling-region="">
 
         <app-header condenses="" reveals="" effects="waterfall">
           <app-toolbar>
@@ -92,11 +103,12 @@
           </paper-tabs>
         </app-header>
 
-        <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main">
+        <neon-animated-pages class="flex" selected="[[page]]" attr-for-selected="name" fallback-selection="view404" entry-animation="slide-from-bottom-animation" exit-animation="fade-out-animation" role="main">
+
           <my-view1 name="view1"></my-view1>
           <my-view2 name="view2"></my-view2>
           <my-view404 name="view404"></my-view404>
-        </iron-pages>
+        </neon-animated-pages>
       </app-header-layout>
     </app-drawer-layout>
   </template>
