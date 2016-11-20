@@ -1,0 +1,173 @@
+<html><head><link rel="import" href="../../bower_components/polymer/polymer.html">
+
+
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+
+
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/paper-spinner/paper-spinner.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-styles/typography.html">
+
+
+<link rel="import" href="../../bower_components/marked-element/marked-element.html">
+
+
+
+</head><body><dom-module id="my-projects">
+
+  <template>
+  <style include="shared-styles">
+  :host {
+    display: block;
+  }
+
+  .flex-wrap {
+    @apply(--layout-horizontal);
+    @apply(--layout-wrap);
+    @apply(--layout-around-justified);
+
+  }
+
+  paper-card{
+    margin-bottom: 16px;
+    width:400px;
+  }
+
+  paper-card.project {
+    @apply(--layout-horizontal);
+  }
+
+  .content {
+    @apply(--layout-flex);
+    float: left;
+  }
+
+  .card-body{
+    min-height:30vh;
+  }
+
+  .header { @apply(--paper-font-headline); }
+  .name { color: var(--paper-grey-600); margin: 10px 0; }
+  paper-icon-button.rate-icon {
+    --iron-icon-fill-color: white;
+    --iron-icon-stroke-color: var(--paper-grey-600);
+  }
+
+  a { color: var(--app-primary-color); }
+
+  #spinContainer{
+    text-align: center;
+  }
+  #spin{
+    margin: auto;
+  }
+
+  .unknowLanguage{
+    width: 50px;
+    border-right: 1px solid #e8e8e8;
+    background-color: #9E9E9E;
+    color: #9E9E9E;
+  }
+
+  .Java{
+    width: 50px;
+    border-right: 1px solid #e8e8e8;
+    background-color: #D32F2F;
+    color: #D32F2F;
+  }
+
+  .Python{
+    width: 50px;
+    border-right: 1px solid #e8e8e8;
+    background-color: #3572a5;
+    color: #3572a5;
+  }
+
+  .Haskell{
+    width: 50px;
+    border-right: 1px solid #e8e8e8;
+    background-color: #7B1FA2;
+    color:  #7B1FA2;
+  }
+
+  .CLIPS{
+    width: 50px;
+    border-right: 1px solid #e8e8e8;
+    background-color: #FFECB3;
+    color: #FFECB3;
+  }
+
+  .C{
+    width: 50px;
+    border-right: 1px solid #e8e8e8;
+    background-color: #212121;
+    color: #212121;
+  }
+
+  .JavaScript{
+    width: 50px;
+    border-right: 1px solid #e8e8e8;
+    background-color: #FFEB3B;
+    color: #FFEB3B;
+  }
+
+.HTML{
+  width: 50px;
+  border-right: 1px solid #e8e8e8;
+  background-color: #FF5722;
+  color: #FF5722;
+}
+
+.CSS{
+  width: 50px;
+  border-right: 1px solid #e8e8e8;
+  background-color: #03A9F4;
+  color: #03A9F4;
+}
+
+.Cplusplus{
+  width: 50px;
+  border-right: 1px solid #e8e8e8;
+  background-color: #E91E63;
+  color: #E91E63;
+}
+  </style>
+
+<div id="spinContainer">
+  <paper-spinner id="spin" active=""></paper-spinner>
+</div>
+
+<div class="container flex-wrap">
+<iron-ajax auto="" url="[[src]]" handle-as="json" last-response="{{ajaxResponse}}" on-response="_ajaxLoaded"></iron-ajax> 
+  <template is="dom-repeat" items="[[ajaxResponse]]"> 
+    <paper-card class="project">
+      <div class$="{{_getClassFromLanguage(item.language)}}">x</div>
+      <div class="content">
+        <div class="card-content">
+          <div class="header"><strong>Nombre:</strong> [[item.name]]</div>
+          
+          <div class="card-body">
+            <p><strong>Descripción:</strong></p>
+            <marked-element markdown="[[item.description]]">
+              <div class="markdown-html"></div>
+            </marked-element>
+            <p><strong>Lenguaje principal:</strong> [[item.language]]</p>
+            <p><strong>Fecha creación:</strong> [[_getDate(item.created_at)]]</p>
+            <p><strong>Fecha actualización:</strong> [[_getDate(item.updated_at)]]</p>
+              
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="[[item.svn_url]]" alt="link al proyecto" target="_blank"><paper-button noink="">Link al proyecto</paper-button></a>
+        </div>
+      </div>
+    </paper-card>
+  </template>
+</div>
+
+</template>
+<script>Polymer({is:"my-projects",properties:{src:{type:String,value:"https://api.github.com/users/diegoreiriz/repos?type=all&sort=created"}},_ajaxLoaded:function(){this.$.spin.active=!1,this.$.spinContainer.style.display="none"},_toArray:function(e){return Object.keys(e).map(function(t){return{name:t,value:e[t]}})},_getDate:function(e){return e.substring(0,10)},_getClassFromLanguage:function(e){return"C++"==e?"Cplusplus":""==e||" "==e||null==e?"unknowLanguage":e}});</script>
+</dom-module>
+</body></html>
