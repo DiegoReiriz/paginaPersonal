@@ -26,7 +26,8 @@
     "particles.js": "^2.0.0",
     "iron-icons": "PolymerElements/iron-icons#^1.2.0",
     "neon-animation": "PolymerElements/neon-animation#^1.2.4",
-    "iron-swipeable-container": "PolymerElements/iron-swipeable-container#^1.0.3"
+    "iron-swipeable-container": "PolymerElements/iron-swipeable-container#^1.0.3",
+    "vaadin-charts": "^3.2.0"
   },
   "devDependencies": {
     "web-component-tester": "^4.0.0"
