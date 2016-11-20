@@ -8,27 +8,22 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
 
-<link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="shared-styles.html">
-<link rel="import" href="../custom_components/my-projects/my-projects.html">
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-<dom-module id="my-view2">
-  <template>
-    <style include="shared-styles">
-      :host {
-        display: block;
+    <title>Tests</title>
 
-        padding: 10px;
-      }
-    </style>
-
-    <my-projects style="padding:24px;"></my-projects>    
-
-  </template>
-
-  <script>
-    Polymer({
-      is: 'my-view2'
-    });
-  </script>
-</dom-module>
+    <script src="../bower_components/web-component-tester/browser.js"></script>
+  </head>
+  <body>
+    <script>
+      WCT.loadSuites([
+        'my-view1.html?dom=shady',
+        'my-view1.html?dom=shadow'
+      ]);
+    </script>
+  </body>
+</html>

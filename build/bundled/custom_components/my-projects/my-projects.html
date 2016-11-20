@@ -1,36 +1,24 @@
-<!--
-@license
-Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
+<html><head><link rel="import" href="../../bower_components/polymer/polymer.html">
 
 
-<!-- POLYMER--->
-<link rel="import" href="../../bower_components/polymer/polymer.html">
-
-<!-- Iron elements -->
 <link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
 
-<!-- Paper elements -->
+
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../../bower_components/paper-spinner/paper-spinner.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../bower_components/paper-styles/typography.html">
 
-<!-- Marked element -->
+
 <link rel="import" href="../../bower_components/marked-element/marked-element.html">
 
 
 
-<dom-module id="my-projects">
+</head><body><dom-module id="my-projects">
 
   <template>
-  <style include = "shared-styles">
+  <style include="shared-styles">
   :host {
     display: block;
   }
@@ -148,18 +136,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </style>
 
 <div id="spinContainer">
-  <paper-spinner id="spin" active></paper-spinner>
+  <paper-spinner id="spin" active=""></paper-spinner>
 </div>
 
-<div  class="container flex-wrap">
-<iron-ajax auto url="[[src]]" handle-as="json" last-response="{{ajaxResponse}}" on-response="_ajaxLoaded"></iron-ajax> <!--getsall the repos -->
-  <template is="dom-repeat" items="[[ajaxResponse]]"> <!--iterates each repo -->
+<div class="container flex-wrap">
+<iron-ajax auto="" url="[[src]]" handle-as="json" last-response="{{ajaxResponse}}" on-response="_ajaxLoaded"></iron-ajax> 
+  <template is="dom-repeat" items="[[ajaxResponse]]"> 
     <paper-card class="project">
       <div class$="{{_getClassFromLanguage(item.language)}}">x</div>
       <div class="content">
         <div class="card-content">
           <div class="header"><strong>Nombre:</strong> [[item.name]]</div>
-          <!-- <div class="name"><strong>Tipo:</strong> [[item.type]]</div> -->
+          
           <div class="card-body">
             <p><strong>Descripción:</strong></p>
             <marked-element markdown="[[item.description]]">
@@ -168,15 +156,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <p><strong>Lenguaje principal:</strong> [[item.language]]</p>
             <p><strong>Fecha creación:</strong> [[_getDate(item.created_at)]]</p>
             <p><strong>Fecha actualización:</strong> [[_getDate(item.updated_at)]]</p>
-              <!--<iron-ajax auto url="[[item.languages_url]]" handle-as="json" last-response="[[data]]"></iron-ajax>
-              <template is="dom-repeat" as="lang" items="[[_toArray(data)]]">
-                  <li>[[lang.name]]</li>
-              </template>
-            </ul>-->
+              
           </div>
         </div>
         <div class="card-actions">
-          <a href="[[item.svn_url]]" alt="link al proyecto" target="_blank"><paper-button noink>Link al proyecto</paper-button></a>
+          <a href="[[item.svn_url]]" alt="link al proyecto" target="_blank"><paper-button noink="">Link al proyecto</paper-button></a>
         </div>
       </div>
     </paper-card>
@@ -184,42 +168,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 </div>
 
 </template>
-<script>
-Polymer({
-  is: 'my-projects',
-
-  properties: {
-    src: {
-      type: String,
-      value: 'https://api.github.com/users/diegoreiriz/repos?type=all&sort=created'
-    }
-  },
-  _ajaxLoaded: function() {
-    this.$.spin.active=false;
-    this.$.spinContainer.style.display='none';
-  },
-  _toArray: function(obj) {
-    return Object.keys(obj).map(function(key) {
-      return {
-        name: key,
-        value: obj[key]
-      };
-    });/*Estanse filtrando as propiedades do objeto por clave*/
-  },
-  _getDate: function(date) {
-    return date.substring(0,10);
-  },
-  _getClassFromLanguage: function(obj) {
-
-    if( obj == "C++")
-      return "Cplusplus";
-    else if( obj == "" ||  obj == " " || obj == null)
-      return "unknowLanguage";
-    else
-      return obj;
-
-  }
-});
-
-</script>
+<script>Polymer({is:"my-projects",properties:{src:{type:String,value:"https://api.github.com/users/diegoreiriz/repos?type=all&sort=created"}},_ajaxLoaded:function(){this.$.spin.active=!1,this.$.spinContainer.style.display="none"},_toArray:function(e){return Object.keys(e).map(function(t){return{name:t,value:e[t]}})},_getDate:function(e){return e.substring(0,10)},_getClassFromLanguage:function(e){return"C++"==e?"Cplusplus":""==e||" "==e||null==e?"unknowLanguage":e}});</script>
 </dom-module>
+</body></html>
