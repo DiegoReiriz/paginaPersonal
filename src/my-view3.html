@@ -12,6 +12,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="shared-styles.html">
 <link rel="import" href="../custom_components/my-profile/my-profile.html">
 <link rel="import" href="../bower_components/neon-animation/neon-animatable-behavior.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../bower_components/nvd3-elements/nvd3-pie.html">
 <link rel="import" href="../bower_components/nvd3-elements/nvd3-multi-bar.html">
 
@@ -23,32 +24,51 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     padding: 10px;
   }
+
+  .container{
+    @apply(--layout-horizontal);
+    @apply(--layout-wrap);
+    @apply(--layout-around-justified);
+    @apply(--layout-flex);
+    float: left;
+  }
+
+  @media all and (max-width: 1450px) {
+    .card{
+      width: 100% !important;
+    }
+  }
+
   </style>
 
-  <div class="card">
+  <div style="padding:24px;">
+    <div class="container">
 
-    <h1>Disclaimer / Advertencia</h1>
-    <p>Modus commodo minimum eum te, vero utinam assueverit per eu.</p>
-    <p>Ea duis bonorum nec, falli paulo aliquid ei eum.Has at minim mucius aliquam, est id tempor laoreet.Pro saepe pertinax ei, ad pri animal labores suscipiantur.</p>
+      <div class="card" style="width:100%;">
+        <h1>Disclaimer / Advertencia</h1>
+        <p>Todo el contenido de este apartado está escrito bajo mi criterio (úselo bajo su resposanbilidad)</p>
+        <p>Básicamente, quería aprender a utilizar como funciona una libería de componentes para el renderizado de gráficos como nvd3.</b>
+      </div>
+
+    <!--  =================================================================================================================    -->
+
+          <nvd3-pie class="card" style="width:45%;"
+          data="{{languages}}"
+          auto-resize
+          show-legend
+          flex-size></nvd3-pie>
+
+          <nvd3-multi-bar class="card" style="width:45%;"
+          data="{{softSkills}}"
+          auto-resize
+          show-legend
+          flex-size
+          use-interactive-guideline>
+          </nvd3-multi-bar>
+
+  <!--  ================================================================================================================= -->
+    </div>
   </div>
-
-  <!--  =================================================================================================================    -->
-  <nvd3-pie
-  data="{{languages}}"
-  auto-resize
-  show-legend
-  flex-size></nvd3-pie>
-
-  <nvd3-multi-bar
-  data="{{softSkills}}"
-  auto-resize
-  show-legend
-  flex-size
-  use-interactive-guideline>
-</nvd3-multi-bar>
-<!--  ================================================================================================================= -->
-
-
 </template>
 
 <script>
@@ -103,28 +123,34 @@ Polymer({
           "key": "Soft Skills",
           "color": "#009688",
           "values": [{
-            "x": "Capacidad de gestión",
-            "y": 7
-          }, {
-            "x": "Chistes malos",
-            "y": 10
-          }, {
-            "x": "Habilidades de comunicación",
-            "y": 8
-          }, {
-            "x": "Trabajo en Equipo",
-            "y": 7
-          }, {
-            "x": "Toleracia al estres",
-            "y": 9
-          }]
+              "x": "Presentaciones con meme",
+              "y": 7
+            },{
+              "x": "Mentoring",
+              "y": 8
+            }, {
+              "x": "Chistes malos",
+              "y": 11
+            }, {
+              "x": "Habilidades de comunicación",
+              "y": 8
+            }, {
+              "x": "Trabajo en Equipo",
+              "y": 7
+            }, {
+              "x": "Toleracia al estres",
+              "y": 9
+            },{
+              "x": "Ganas de Aprender",
+              "y": 10
+            }]
         }]
       },
       tecnologías:{
         type: Array,
         value: [
           {
-            "key": "Soft Skills",
+            "key": "Tecnologias",
             "color": "#009688",
             "values": [{
               "x": "Git",
