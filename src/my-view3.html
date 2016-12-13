@@ -10,7 +10,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="shared-styles.html">
-<link rel="import" href="../custom_components/my-profile/my-profile.html">
+<link rel="import" href="../custom_components/my-stats/my-stats.html">
 <link rel="import" href="../bower_components/neon-animation/neon-animatable-behavior.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../bower_components/nvd3-elements/nvd3-pie.html">
@@ -18,160 +18,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <dom-module id="my-view3">
   <template>
-  <style include="shared-styles">
-  :host {
-    display: block;
+    <style include="shared-styles">
+      :host {
+        display: block;
 
-    padding: 10px;
-  }
+        padding: 10px;
+      }
 
-  .container{
-    @apply(--layout-horizontal);
-    @apply(--layout-wrap);
-    @apply(--layout-around-justified);
-    @apply(--layout-flex);
-    float: left;
-  }
+    </style>
 
-  @media all and (max-width: 1450px) {
-    .card{
-      width: 100% !important;
-    }
-  }
+    <my-stats style="padding:24px;"></my-stats>
+  </template>
 
-  </style>
-
-  <div style="padding:24px;">
-    <div class="container">
-
-      <div class="card" style="width:100%;">
-        <h1>Disclaimer / Advertencia</h1>
-        <p>Todo el contenido de este apartado está escrito bajo mi criterio (úselo bajo su resposanbilidad)</p>
-        <p>Básicamente, quería aprender a utilizar como funciona una libería de componentes para el renderizado de gráficos como nvd3.</b>
-      </div>
-
-    <!--  =================================================================================================================    -->
-
-          <nvd3-pie class="card" style="width:45%;"
-          data="{{languages}}"
-          auto-resize
-          show-legend
-          flex-size></nvd3-pie>
-
-          <nvd3-multi-bar class="card" style="width:45%;"
-          data="{{softSkills}}"
-          auto-resize
-          show-legend
-          flex-size
-          use-interactive-guideline>
-          </nvd3-multi-bar>
-
-  <!--  ================================================================================================================= -->
-    </div>
-  </div>
-</template>
-
-<script>
-Polymer({
-  is: 'my-view3',
-  behaviors: [Polymer.NeonAnimatableBehavior],
-  properties: {
-    languages: {
-      type:Array,
-      value: [
-        {
-          "label": "C",
-          "value": 90,
-          "color":"#212121"
-        },
-        {
-          "label": "Java",
-          "value": 85,
-          "color": "#D32F2F"
-        },
-        {
-          "label": "Android",
-          "value": 75,
-          "color": "#8BC34A"
-        },
-        {
-          "label": "Python",
-          "value": 50,
-          "color": "#3572a5"
-        },
-        {
-          "label": "C++",
-          "value": 40,
-          "color": "#E91E63"
-        },
-        {
-          "label": "C#",
-          "value": 30,
-          "color": "#9C27B0"
-        },
-        {
-          "label": "Js",
-          "value": 20,
-          "color": "#FFEB3B"
-        }
-      ]
-    },
-    softSkills:{
-      type: Array,
-      value: [
-        {
-          "key": "Soft Skills",
-          "color": "#009688",
-          "values": [{
-              "x": "Presentaciones con meme",
-              "y": 7
-            },{
-              "x": "Mentoring",
-              "y": 8
-            }, {
-              "x": "Chistes malos",
-              "y": 11
-            }, {
-              "x": "Habilidades de comunicación",
-              "y": 8
-            }, {
-              "x": "Trabajo en Equipo",
-              "y": 7
-            }, {
-              "x": "Toleracia al estres",
-              "y": 9
-            },{
-              "x": "Ganas de Aprender",
-              "y": 10
-            }]
-        }]
-      },
-      tecnologías:{
-        type: Array,
-        value: [
-          {
-            "key": "Tecnologias",
-            "color": "#009688",
-            "values": [{
-              "x": "Git",
-              "y": 7
-            }, {
-              "x": "Docker",
-              "y": 10
-            }, {
-              "x": "OpenMP",
-              "y": 8
-            }, {
-              "x": "Polymer",
-              "y": 7
-            }, {
-              "x": "SciKit Learn",
-              "y": 9
-            }]
-          }]
-        }
-    }
-  });
+  <script>
+    Polymer({
+      is: 'my-view3',
+      behaviors: [Polymer.NeonAnimatableBehavior]
+    });
 
   </script>
 </dom-module>

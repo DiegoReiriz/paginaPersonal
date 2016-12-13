@@ -1,0 +1,178 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+
+<!-- POLYMER--->
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<link rel="import" href="../../custom_components/my-profile/my-profile.html">
+<link rel="import" href="../../bower_components/neon-animation/neon-animatable-behavior.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/nvd3-elements/nvd3-pie.html">
+<link rel="import" href="../../bower_components/nvd3-elements/nvd3-discrete-bar.html">
+
+<dom-module id="my-stats">
+  <template>
+    <style include = "shared-styles">
+      :host {
+        display: block;
+      }
+
+      .container{
+        @apply(--layout-horizontal);
+        @apply(--layout-wrap);
+        @apply(--layout-around-justified);
+        @apply(--layout-flex);
+      }
+
+      @media all and (max-width: 1450px) {
+        .card{
+          width: 100% !important;
+        }
+      }
+
+    </style>
+
+    <div class="container">
+
+      <div class="card" style="width:90%;">
+        <h1>Disclaimer / Advertencia</h1>
+        <p>Todo el contenido de este apartado está escrito bajo mi criterio (úselo bajo su resposanbilidad)</p>
+        <p>Este solo existe porque quería probar a utilizar una librería de componentes para el renderizado de gráficos como <a href="https://beta.webcomponents.org/element/saeidzebardast/nvd3-elements">nvd3</a>.</b>
+      </div>
+
+    <!--  =================================================================================================================    -->
+
+    <nvd3-pie class="card" style="width:40%;"
+      data="{{languages}}"
+      auto-resize
+      show-legend
+      flex-size></nvd3-pie>
+
+    <nvd3-discrete-bar class="card" style="width:40%;"
+      data="{{softSkills}}"
+      xAxisLabels=""
+      auto-resize
+      flex-size
+      extraViewBoxWidth="100"
+      >
+    </nvd3-discrete-bar>
+
+    <!--  ================================================================================================================= -->
+    </div>
+
+  </template>
+
+  <script>
+    Polymer({
+      is: 'my-stats',
+      ready:function(){
+        //COSAS
+      },
+      properties: {
+        languages: {
+          type:Array,
+          value: [
+            {
+              "label": "C",
+              "value": 90,
+              "color":"#212121"
+            },
+            {
+              "label": "Java",
+              "value": 85,
+              "color": "#D32F2F"
+            },
+            {
+              "label": "Android",
+              "value": 75,
+              "color": "#8BC34A"
+            },
+            {
+              "label": "Python",
+              "value": 50,
+              "color": "#3572a5"
+            },
+            {
+              "label": "C++",
+              "value": 40,
+              "color": "#E91E63"
+            },
+            {
+              "label": "C#",
+              "value": 30,
+              "color": "#9C27B0"
+            },
+            {
+              "label": "Js",
+              "value": 20,
+              "color": "#FFEB3B"
+            }
+          ]
+        },
+        softSkills:{
+          type: Array,
+          value: [
+            {
+              "key": "Soft Skills",
+              "color": "#009688",
+              "values": [{
+                  "label": "Tolerancia estres",
+                  "value": 9
+                }, {
+                  "label": "Teamwork",
+                  "value": 8
+                },{
+                  "label": "Uso de memes",
+                  "value": 6
+                }, {
+                  "label": "Chistes malos",
+                  "value": 11
+                }, {
+                  "label": "Comunicación",
+                  "value": 8
+                }, {
+                  "label": "Mentoring",
+                  "value": 7
+                },{
+                  "label": "Ganas de aprender",
+                  "value": 10
+                }]
+            }]
+          },
+          tecnologías:{
+            type: Array,
+            value: [
+              {
+                "key": "Tecnologias",
+                "color": "#009688",
+                "values": [{
+                  "label": "Git",
+                  "value": 7
+                }, {
+                  "label": "Docker",
+                  "value": 10
+                }, {
+                  "label": "OpenMP",
+                  "value": 8
+                }, {
+                  "label": "Polymer",
+                  "value": 7
+                }, {
+                  "label": "SciKit Learn",
+                  "value": 9
+                }]
+              }]
+            }
+        }
+    });
+
+  </script>
+</dom-module>
